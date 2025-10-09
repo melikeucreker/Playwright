@@ -1,7 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
-import environmentBaseUrl from './utils/environmentBaseUrl.js';
-
+import environmentBaseUrl from './environmentBaseUrl';
 
 dotenv.config();
 
@@ -37,4 +36,9 @@ export default defineConfig({
       },
     },
   ],
+
+  
+  globalSetup: require.resolve('./setups/global-setup.ts'),
+
+  
 });
