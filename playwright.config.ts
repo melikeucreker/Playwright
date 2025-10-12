@@ -33,12 +33,20 @@ export default defineConfig({
         baseURL: process.env.CI
           ? environmentBaseUrl.ci.prefix + process.env.GITHUB_REF_NAME + environmentBaseUrl.ci.suffix
           : environmentBaseUrl.staging.home,
+        storageState: 'storageState.json',
+        trace: 'on-first-retry',
+        screenshot: 'only-on-failure',
+      },
+    },
+
+    //globalSetup: require.resolve('./setups/global-setup.ts'),
+    {
+      name: 'auth-setup',
+      testMatch: /.*auth\.setup\.ts/,
+      use: {
+        baseURL: 'https://www.saucedemo.com/',
+        ...devices['Desktop Chrome'],
       },
     },
   ],
-
-  
-  globalSetup: require.resolve('./setups/global-setup.ts'),
-
-  
 });

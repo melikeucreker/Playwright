@@ -26,7 +26,7 @@ export default async function globalSetup() {
   await loginPage.doLogin(username, password);
   await loginPage.checkLoggedIn(username);
 
-  await page.context().storageState({ path: storagePath });
+  await page.context().storageState({ path: 'storagePath.json' });
 
   await browser.close();
 }
